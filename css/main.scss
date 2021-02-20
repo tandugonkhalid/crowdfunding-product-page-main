@@ -1,0 +1,658 @@
+@import url("https://fonts.googleapis.com/css2?family=Commissioner&display=swap");
+
+$colors: (
+  moderate_cyan: hsl(176, 50%, 47%),
+  dark_cyan: hsl(176, 72%, 28%),
+  black: hsl(0, 0%, 0%),
+  dark_gray: hsl(0, 0%, 48%),
+  white: #fff,
+  whitesmoke: hsl(0, 0%, 96%),
+);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.hero {
+  width: 100%;
+  height: 53vh;
+  background-image: url("../images/image-hero-desktop.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2em;
+
+  .logo {
+    margin: 10px 0px 10px 30px;
+  }
+
+  .navigator {
+    margin-right: 6em;
+
+    nav li {
+      list-style-type: none;
+      color: map-get($colors, white);
+      margin: 10px 0px 10px 40px;
+      font-size: 16px;
+      font-family: "Commissioner", sans-serif;
+    }
+
+    li::after {
+      content: "";
+      display: block;
+      width: 5%;
+      transition: 0.5s;
+    }
+
+    li:hover::after {
+      border-bottom: 1px solid map-get($colors, white);
+      width: 100%;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .ham {
+    display: none;
+  }
+
+  .mobile_nav {
+    display: none;
+  }
+}
+
+.riser {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: map-get($colors, whitesmoke);
+
+  .logo {
+    margin-top: -110px;
+    z-index: 2;
+
+    > img {
+      width: 30px;
+      height: 30px;
+      z-index: 3;
+      margin-top: 30px;
+    }
+  }
+
+  .title {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    z-index: 1;
+    height: 30vh;
+    width: 50vw;
+    background-color: map-get($colors, white);
+    margin-top: -17px;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      font-family: "Commissioner", sans-serif;
+    }
+
+    p {
+      font-family: "Commissioner", sans-serif;
+      color: map-get($colors, dark_gray);
+      margin-top: 15px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 1em;
+      margin-top: 30px;
+
+      button {
+        background-color: map-get($colors, moderate_cyan);
+        padding: 1em;
+        border-radius: 50px;
+        border: none;
+        width: 150px;
+        height: 100%;
+        font-family: "Commissioner", sans-serif;
+        color: map-get($colors, white);
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 120px;
+        height: 40px;
+
+        input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgb(226, 226, 226);
+          transition: 0.4s;
+
+          p {
+            position: absolute;
+            right: 10px;
+            bottom: 13px;
+            transition: 0.4s;
+          }
+        }
+
+        .slider.round {
+          border-radius: 34px;
+        }
+
+        .slider.round:before {
+          border-radius: 50%;
+        }
+
+        .slider::before {
+          position: absolute;
+          content: "";
+          height: 40px;
+          width: 40px;
+          left: 0px;
+          bottom: 0px;
+          background-image: url("../images/icon-bookmark.svg");
+          background-size: cover;
+          transition: 0.4s;
+        }
+
+        input:checked + .slider {
+          background-color: rgb(226, 226, 226);
+        }
+
+        input:focus + .slider {
+          box-shadow: 0 0 1px #2196f3;
+        }
+
+        input:checked + .slider:before {
+          transform: translateX(80px);
+          background-image: url("../images/icon-bookmark_cyan.svg");
+        }
+
+        input:checked + span p {
+          color: map-get($colors, moderate_cyan);
+          transform: translateX(-35px);
+        }
+      }
+    }
+  }
+}
+
+.statistics {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 50vw;
+  background-color: map-get($colors, white);
+  border-radius: 10px;
+  margin-top: 30px;
+  height: 25vh;
+
+  .statistics_top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    margin-top: 30px;
+
+    .stats {
+      padding: 0 2em 0 2em;
+      font-family: "Commissioner", sans-serif;
+      border-right: 1px solid lightgray;
+
+      p {
+        margin-top: 10px;
+        color: map-get($colors, dark_gray);
+        font-size: 13px;
+      }
+
+      h1 {
+        font-weight: 700;
+      }
+    }
+
+    :last-child {
+      border: none;
+    }
+  }
+
+  .container {
+    background-color: map-get($colors, whitesmoke);
+    width: 80%;
+    height: 10px;
+    border-radius: 15px;
+    margin-top: 30px;
+
+    .prograssbar {
+      padding: 1%;
+    }
+
+    .color {
+      width: 80%;
+      height: 10px;
+      background-color: map-get($colors, moderate_cyan);
+      border-radius: 15px;
+    }
+  }
+}
+
+.project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  width: 50vw;
+  background-color: map-get($colors, white);
+  margin-top: 30px;
+
+  h3 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: "Commissioner", sans-serif;
+  }
+
+  .description {
+    padding: 2em;
+    font-family: "Commissioner", sans-serif;
+
+    p {
+      padding-bottom: 30px;
+      color: map-get($colors, dark_gray);
+      line-height: 30px;
+      font-size: 16px;
+    }
+  }
+
+  .item {
+    margin: 2em;
+    padding: 2em;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+
+    p {
+      font-family: "Commissioner", sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .item_header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+        color: map-get($colors, moderate_cyan);
+      }
+    }
+
+    .item_body > p {
+      color: map-get($colors, dark_gray);
+      text-align: left;
+      letter-spacing: 0.5px;
+      line-height: 30px;
+      font-size: 16px;
+    }
+
+    .item_footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+        color: map-get($colors, dark_gray);
+      }
+
+      .first::before {
+        content: "101";
+        color: map-get($colors, black);
+        font-size: 30px;
+        font-weight: 700;
+        margin-right: 10px;
+      }
+
+      .second::before {
+        content: "64";
+        color: map-get($colors, black);
+        font-size: 30px;
+        font-weight: 700;
+        margin-right: 10px;
+      }
+
+      .third::before {
+        content: "0";
+        color: map-get($colors, black);
+        font-size: 30px;
+        font-weight: 700;
+        margin-right: 10px;
+      }
+
+      button {
+        font-family: "Commissioner", sans-serif;
+        background-color: transparent;
+        border: none;
+        color: map-get($colors, white);
+      }
+
+      button:focus {
+        outline: none;
+      }
+
+      .btn {
+        padding: 1.5em;
+        width: 150px;
+        border-radius: 50px;
+        height: 30px;
+        background-color: map-get($colors, moderate_cyan);
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn[target="_blank"] {
+        background-color: lightgray;
+      }
+    }
+  }
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3em;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  z-index: -2;
+  transition: .4s;
+
+  &.is--visible {
+    opacity: 1;
+    z-index: 4;
+  }
+
+  .modal_body {
+    width: 50%;
+    height: 100%;
+    background-color: map-get($colors, white);
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em;
+    overflow-y: auto;
+
+    .modal_header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+
+      h3 {
+        font-family: "Commissioner", sans-serif;
+        font-weight: 700;
+      }
+
+      .close {
+        position: relative;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+
+        .close-left,
+        .close-right {
+          position: absolute;
+          width: 0;
+          top: 10px;
+          height: 5px;
+          border-style: solid;
+          border-width: 0 0 0 20px;
+          border-color: map-get($colors, dark_gray);
+        }
+
+        .close-left {
+          transform: rotate(45deg);
+        }
+
+        .close-right {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    span {
+      font-family: "Commissioner", sans-serif;
+      color: map-get($colors, dark_gray);
+      margin-bottom: 30px;
+      font-size: 13px;
+    }
+
+    .pledge_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      // height: 30%;
+      border: 2px solid lightgray;
+      border-radius: 10px;
+      padding: 2em;
+      margin-bottom: 20px;
+
+      .pledge_header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 20px;
+        width: 100%;
+
+        input {
+          margin-right: 10px;
+        }
+
+        .pledge_title {
+          color: map-get($colors, moderate_cyan);
+          font-weight: 700;
+          margin-right: 20px;
+        }
+      }
+
+      p {
+        font-family: "Commissioner", sans-serif;
+        text-align: left;
+        font-size: 13px;
+        line-height: 20px;
+        color: map-get($colors, dark_gray);
+        margin-left: 20px;
+      }
+
+      .first {
+        margin-left: 200px;
+      }
+
+      .second {
+        margin-left: 200px;
+      }
+
+      .third {
+        margin-left: 200px;
+      }
+
+      p {
+        color: map-get($colors, dark_gray);
+      }
+
+      .first::before {
+        content: "101";
+        color: map-get($colors, black);
+        font-size: 20px;
+        font-weight: 700;
+        margin-right: 10px;
+      }
+
+      .second::before {
+        content: "64";
+        color: map-get($colors, black);
+        font-size: 20px;
+        font-weight: 700;
+        margin-right: 10px;
+      }
+
+      .third::before {
+        content: "0";
+        color: map-get($colors, black);
+        font-size: 20px;
+        font-weight: 700;
+        margin-right: 10px;
+      }
+
+      .input_pledge {
+        display: none;
+
+        &.visible {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          width: 100%;
+          border-top: 2px solid lightgray;
+          padding-top: 1em;
+          margin-top: 20px;
+        }
+
+        input {
+          margin-left: 120px;
+          background-color: map-get($colors, white);
+          padding: 0.7em;
+          border-radius: 50px;
+          border: 1px solid map-get($colors, moderate_cyan);
+          width: 70px;
+          font-family: "Commissioner", sans-serif;
+          color: map-get($colors, dark_gray);
+        }
+
+        input:focus {
+          outline: none;
+        }
+
+        button {
+          margin-left: 5px;
+          background-color: map-get($colors, dark_cyan);
+          padding: 0.7em;
+          border-radius: 70px;
+          border: none;
+          width: 80px;
+          height: 100%;
+          font-family: "Commissioner", sans-serif;
+          color: map-get($colors, white);
+        }
+
+        button:focus{
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.success_modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -2;
+  opacity: 0;
+  transition: .4s;
+
+  &.success{
+    z-index: 5;
+    opacity: 1;
+  }
+
+  .success_modal_body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: map-get($colors , white );
+    width: 30%;
+    border-radius: 20px;
+    padding: 2em;
+    font-family: 'Commissioner', sans-serif;
+    transition: .10s;
+
+      img{
+        margin: 10px;
+      }
+
+      h3{
+        margin: 10px;
+      }
+
+      p{
+        line-height: 30px;
+        text-align: center;
+        font-size: 15px;
+        width: 80%;
+        margin: 10px;
+      }
+
+      button {
+        margin: 20px;
+        background-color: map-get($colors, moderate_cyan);
+        padding: 0.7em;
+        border-radius: 70px;
+        border: none;
+        width: 80px;
+        height: 100%;
+        font-family: "Commissioner", sans-serif;
+        color: map-get($colors, white);
+      }
+
+      button:focus{
+        outline: none;
+      }
+  }
+}
